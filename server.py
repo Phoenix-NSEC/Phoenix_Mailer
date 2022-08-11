@@ -20,6 +20,7 @@ def uploadData():
     for k, v in json.loads(jsonData).items():
         count = count + sendZohoMail(k, subject, v)
         time.sleep(10)
+    sendZohoMail('info@phoenixnsec.in', 'mailing result',jsonify({'status': 'success', 'total_entry': total_count, 'sent_to': count}))
     return make_response(jsonify({'status': 'success', 'total_entry': total_count, 'sent_to': count}), 200)
 
 
